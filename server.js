@@ -40,3 +40,17 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Your server is running on ${PORT}`.bgBlue.white);
 });
+//update
+const allowedOrigins = ['https://thankful-mittens-tick.cyclic.app'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+
+// Use cors middleware with options
+app.use(cors(corsOptions));
